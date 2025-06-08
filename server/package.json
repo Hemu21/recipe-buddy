@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Hemant Kumar",
+  "license": "MIT",
+  "description": "Restful API server with SQLite3 using Express.js for a Recipe Application",
+  "dependencies": {
+    "better-sqlite3": "^11.10.0",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
