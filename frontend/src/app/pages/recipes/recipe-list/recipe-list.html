@@ -1,0 +1,45 @@
+<div class="max-w-4xl mx-auto my-8 px-4">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-gray-800">My Recipes</h1>
+    <button routerLink="add"
+            class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">
+      + Add Recipe
+    </button>
+  </div>
+
+  @if (loading$ | async) {
+    <div class="flex justify-center py-10">
+      <svg class="w-8 h-8 animate-spin text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+           viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor"
+              d="M4 12a8 8 0 018-8v8H4z"></path>
+      </svg>
+    </div>
+  }
+  @else {
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      @for (r of recipes$ | async; track r.id) {
+        <div class="bg-white shadow rounded-lg overflow-hidden hover:shadow-lg transition cursor-pointer">
+          <div class="p-4 space-y-2">
+            <h2 class="text-xl font-semibold text-gray-800">{{ r.title }}</h2>
+            <p class="text-gray-600 text-sm">{{ r.ingredients.length }} ingredient(s)</p>
+          </div>
+          <div class="flex justify-end space-x-2 p-4 border-t bg-gray-50">
+            <a [routerLink]="[r.id]"
+               class="text-indigo-600 hover:underline">Details</a>
+            <a [routerLink]="[r.id, 'edit']"
+               class="text-yellow-600 hover:underline">Edit</a>
+            <button (click)="delete(r.id)"
+                    class="text-red-600 hover:underline">Delete</button>
+          </div>
+        </div>
+      }
+      @empty {
+        <p class="col-span-full text-center text-gray-600">
+          No recipes yet. Click "Add Recipe" to start!
+        </p>
+      }
+    </div>
+  }
+</div>
