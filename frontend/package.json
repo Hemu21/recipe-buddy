@@ -1,10 +1,11 @@
 {
-  "name": "frontend",
-  "version": "0.0.0",
+  "name": "recipe-buddy",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "dev": "ng dev",
+    "build": "node set-env.js && ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -16,7 +17,11 @@
     "@angular/forms": "^20.0.0",
     "@angular/platform-browser": "^20.0.0",
     "@angular/router": "^20.0.0",
+    "@ngrx/effects": "^19.2.1",
+    "@ngrx/store": "^19.2.1",
     "@tailwindcss/postcss": "^4.1.8",
+    "dotenv": "^16.5.0",
+    "fs": "^0.0.1-security",
     "postcss": "^8.5.4",
     "rxjs": "~7.8.0",
     "tailwindcss": "^4.1.8",

@@ -1,0 +1,61 @@
+<div class="max-w-2xl mx-auto my-8 p-6 bg-white rounded-lg shadow-lg">
+  @if (recipe$ | async; as recipe) {
+  <div>
+    <h2 class="text-3xl font-bold text-gray-800 mb-4">{{ recipe.title }}</h2>
+
+    <div class="mb-4">
+      <h3 class="text-lg font-semibold text-gray-700 mb-2">Ingredients</h3>
+      <ul class="list-disc list-inside space-y-1 text-gray-600">
+        @for (ing of recipe.ingredients; track $index; let i = $index) {
+        <li>{{ ing }}</li>
+        }
+      </ul>
+    </div>
+
+    <div class="mb-4">
+      <h3 class="text-lg font-semibold text-gray-700 mb-2">Instructions</h3>
+      <p class="prose prose-indigo text-gray-600">{{ recipe.instructions }}</p>
+    </div>
+
+    @if (recipe.tags && recipe.tags.length > 0) {
+    <div class="mt-4">
+      <h3 class="text-lg font-semibold text-gray-700 mb-2">Tags</h3>
+      <div class="flex flex-wrap gap-2">
+        @for (tag of recipe.tags; track $index; let i = $index) {
+        <span
+          class="inline-block bg-indigo-100 text-indigo-800 text-sm px-3 py-1 rounded-full"
+          >{{ tag }}</span
+        >
+        }
+      </div>
+    </div>
+    }
+  </div>
+  } @else if (loading$ | async) {
+  <div class="flex items-center justify-center space-x-2">
+    <svg
+      class="w-6 h-6 animate-spin text-indigo-500"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <circle
+        class="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        stroke-width="4"
+      ></circle>
+      <path
+        class="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8v8H4z"
+      ></path>
+    </svg>
+    <span class="text-gray-600 text-lg">Loading recipe...</span>
+  </div>
+  } @else {
+  <p class="text-center text-gray-600">No recipe data found.</p>
+  }
+</div>
