@@ -73,7 +73,7 @@ npm run dev
 
 To view the deployed app live, use this link:
 
-**[Recipe Buddy Live Demo]()**
+**[Recipe Buddy Live Demo](https://recipe-buddy-puce.vercel.app)**
 
 ---
 
