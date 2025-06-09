@@ -1,4 +1,6 @@
 {
-  "outputDirectory": "dist/frontend",
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ],
+  "outputDirectory": "frontend/dist/frontend"
 }

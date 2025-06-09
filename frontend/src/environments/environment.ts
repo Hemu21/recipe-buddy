@@ -1,5 +1,5 @@
 
 export const environment = {
   production: true,
-  API_URL: 'http://localhost:3000/recipes'
+  API_URL: 'http://localhost:3000'
 };
